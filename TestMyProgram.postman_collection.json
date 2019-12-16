@@ -1,0 +1,119 @@
+{
+	"info": {
+		"_postman_id": "91aa03af-cf85-493d-ba4b-49429fa7fc21",
+		"name": "TestMyProgram",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "rbc",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0aac1f60-6dfa-40de-a9c2-be14043b978f",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/rbc",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rbc"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "weather",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "130b8c38-e342-4d4b-a864-2a5bb04dc305",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/weather",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"weather"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "predict",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9395795f-24d9-4209-aab4-892da4efd035",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/predict?temperature=5",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"predict"
+					],
+					"query": [
+						{
+							"key": "temperature",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
