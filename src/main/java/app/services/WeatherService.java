@@ -1,4 +1,4 @@
-package app;
+package app.services;
 
 import app.entity.Temperature;
 import app.repositories.TemperatureRepository;

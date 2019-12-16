@@ -1,8 +1,8 @@
 package app.controllers;
 
-import app.PredictService;
-import app.RBCService;
-import app.WeatherService;
+import app.services.PredictService;
+import app.services.RBCService;
+import app.services.WeatherService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.util.Pair;
@@ -49,7 +49,10 @@ public class PredictController {
                 ++j;
             }
         }
-        predictService.fit(temperatureList, rateList);
+        if (!predictService.getLearn()) {
+            predictService.fit(temperatureList, rateList);
+            predictService.setLearn(true);
+        }
         return predictService.predict(temperature).toString();
     }
 }

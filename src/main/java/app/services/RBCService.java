@@ -1,4 +1,4 @@
-package app;
+package app.services;
 
 import app.entity.Rate;
 import app.repositories.RateRepository;
@@ -21,7 +21,7 @@ public class RBCService {
     @Autowired
     private RateRepository rateRepository;
 
-    private String getResponse(String date) {
+    public String getResponse(String date) {
         String[] yMd = date.split("-");
         String url = "http://export.rbc.ru/free/selt.0/free.fcgi?period=DAILY&tickers=USD000000TOD" +
                 "&separator=TAB&data_format=BROWSER&d1=" + yMd[2] + "&m1=" + yMd[1] + "&y1=" + yMd[0];
@@ -31,7 +31,7 @@ public class RBCService {
         return responseEntity.getBody();
     }
 
-    private ArrayList<Pair<String, Double>> getRBCResponse(String date) {
+    public ArrayList<Pair<String, Double>> getRBCResponse(String date) {
         ArrayList<Pair<String, Double>> parsedData = new ArrayList<>();
         String response = getResponse(date);
         if (response == null) {

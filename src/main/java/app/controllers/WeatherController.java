@@ -1,6 +1,6 @@
 package app.controllers;
 
-import app.WeatherService;
+import app.services.WeatherService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
