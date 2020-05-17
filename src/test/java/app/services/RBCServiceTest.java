@@ -5,7 +5,6 @@ import org.mockito.Mockito;
 import org.springframework.data.util.Pair;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import static org.junit.Assert.*;
 

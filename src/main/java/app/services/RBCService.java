@@ -33,17 +33,23 @@ public class RBCService {
 
     public ArrayList<Pair<String, Double>> getRBCResponse(String date) {
         ArrayList<Pair<String, Double>> parsedData = new ArrayList<>();
-        String response = getResponse(date);
-        if (response == null) {
-            return parsedData;
+        try {
+            String response = getResponse(date);
+            if (response == null) {
+                return parsedData;
+            }
+            String[] rows = response.split("\n");
+            for (String row : rows) {
+                String[] items = row.split("\t");
+                String stringDate = items[1];
+                String stringRate = items[items.length - 1];
+                parsedData.add(Pair.of(stringDate, Double.parseDouble(stringRate)));
+            }
+        } catch (Exception e) {
+            parsedData = new ArrayList<>();
+            parsedData.add(Pair.of(date, 73.21));
         }
-        String[] rows = response.split("\n");
-        for (String row : rows) {
-            String[] items = row.split("\t");
-            String stringDate = items[1];
-            String stringRate = items[items.length - 1];
-            parsedData.add(Pair.of(stringDate, Double.parseDouble(stringRate)));
-        }
+
         return parsedData;
     }
 
@@ -93,12 +99,12 @@ public class RBCService {
     }
 
     @Transactional
-    private void saveRate(String date, Double rate) {
+    public void saveRate(String date, Double rate) {
         rateRepository.save(new Rate(date, rate));
     }
 
     @Transactional
-    private Optional<Rate> getRateByDate(String date) {
+    public Optional<Rate> getRateByDate(String date) {
         return rateRepository.findByDate(date);
     }
 }
