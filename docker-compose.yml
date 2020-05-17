@@ -1,0 +1,16 @@
+version: '3'
+services:
+  prediction:
+    build: ./prediction/
+    ports:
+      - "8082:8082"
+
+  weather:
+    build: ./weather/
+    ports:
+      - "8083:8083"
+
+  rbc:
+    build: ./rbc/
+    ports:
+      - "8081:8081"
