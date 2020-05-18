@@ -1,0 +1,27 @@
+---
+-
+  hosts: rbcserver
+  remote_user: mftiedu
+  tasks:
+    -
+      shell: "mkdir -p edu/marchenko"
+      name: "create deploying dir"
+    -
+      copy: "src=../rbc/target/rbc-1.0-SNAPSHOT.jar dest=edu/marchenko/ owner=mftiedu mode=7777"
+      name: "copy rbc"
+    -
+      shell: "nohup java -jar edu/marchenko/rbc-1.0-SNAPSHOT.jar &"
+      name: "deploy rbc"
+-
+  hosts: weatherserver
+  remote_user: edumfti
+  tasks:
+    -
+      shell: "mkdir -p edu/marchenko"
+      name: "create deploying dir"
+    -
+      copy: "src=../weather/target/weather-1.0-SNAPSHOT.jar dest=edu/marchenko/ owner=edumfti mode=7777"
+      name: "copy weather"
+    -
+      shell: "nohup java -jar edu/marchenko/weather-1.0-SNAPSHOT.jar &"
+      name: "deploy weather"
