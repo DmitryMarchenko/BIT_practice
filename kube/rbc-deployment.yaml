@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rbc
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rbc
+  template:
+    metadata:
+      name: rbc
+      labels:
+        app: rbc
+    spec:
+      containers:
+        - name: rbc
+          image: rbc-image
+          imagePullPolicy: IfNotPresent
